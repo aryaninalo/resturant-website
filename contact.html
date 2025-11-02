@@ -1,273 +1,0 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تماس با ما</title>
-</head>
-<body>
-  <header class="sticky-header">
-  <nav class="nav-bar">
-    <div class="nav-left">
-      <a href="restaurant.html" class="nav-link">درباره ما</a>
-      <a href="contact.html" class="nav-link">تماس با ما</a>
-    </div>
-
-    <div class="nav-logo">
-      <a href="restaurant.html">
-        <img src="assets/images/logo.jpg" alt="لوگو" class="logo-circle" />
-      </a>
-    </div>
-
-    <div class="nav-right">
-      <a href="reservation.html" class="nav-link">رزرو میز</a>
-      <a href="menu.html" class="nav-link">منوی غذا</a>
-    </div>
-  </nav>
-</header>
-
-
-
-
-
-
-
-  <div class="contact-page">
-    <div class="contact-container">
-      <div class="contact-typewriter">
-        <span id="contact-typed-text"></span><span class="contact-cursor"></span>
-      </div>
-      <p class="contact-subtitle">
-        پرسشی دارید؟ رزرو خاصی می‌خواهید؟ تیم ما با خوشحالی پاسخ‌گوست.
-      </p>
-      <div class="contact-scroll-hint">
-  <span class="contact-scroll-text">برای دیدن جزئیات بیشتر، پایین بروید</span>
-</div>
-<div class="contact-scroll-hint" id="scrollHint">
-  <svg class="contact-scroll-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 16L6 10H18L12 16Z" fill="currentColor"/>
-  </svg>
-    <svg class="contact-scroll-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 16L6 10H18L12 16Z" fill="currentColor"/>
-  </svg>
-    <svg class="contact-scroll-icon" viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 16L6 10H18L12 16Z" fill="currentColor"/>
-  </svg>
-  <script>
-  const scrollHint = document.getElementById('scrollHint');
-
-  window.addEventListener('scroll', () => {
-    const threshold = 100; // فاصله‌ای که بعد از آن فلش محو شود
-    if (window.scrollY > threshold) {
-      scrollHint.style.opacity = '0';
-    } else {
-      scrollHint.style.opacity = '1';
-    }
-  });
-</script>
-</div>
-    </div>
-  </div>
-
-  <script>
-    const phrases = [
-      "تماس با ما",
-      "در کنار شما هستیم",
-      "پاسخ‌گو و آماده",
-      "رزرو خاص؟ همین حالا بپرسید"
-    ];
-
-    const typedEl = document.getElementById('contact-typed-text');
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      const currentPhrase = phrases[phraseIndex];
-      if (isDeleting) {
-        typedEl.textContent = currentPhrase.slice(0, --charIndex);
-        if (charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(typeEffect, 500);
-        } else {
-          setTimeout(typeEffect, 50);
-        }
-      } else {
-        typedEl.textContent = currentPhrase.slice(0, ++charIndex);
-        if (charIndex === currentPhrase.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 1200);
-        } else {
-          setTimeout(typeEffect, 100);
-        }
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', typeEffect);
-  </script>
-
-
-
-
-
-
-<div class="contact-card">
-  <h3 class="contact-card-title">راه‌های ارتباط با ما</h3>
-  <ul class="contact-list">
-    <li>
-      <a href="tel:+989123456789" class="contact-link">
-        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.64.58 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.72 11.72 0 00.58 3.64 1 1 0 01-.21 1.11l-2.2 2.2z"/></svg>
-        <span>۰۹۱۲۳۴۵۶۷۸۹</span>
-      </a>
-    </li>
-    <li>
-      <a href="mailto:info@example.com" class="contact-link">
-        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 5 8-5v10H4z"/></svg>
-        <span>info@example.com</span>
-      </a>
-    </li>
-    <li class="contact-socials">
-      <span class="contact-social-label">ما را دنبال کنید:</span>
-      <a href="https://instagram.com/yourpage" target="_blank" class="contact-social">
-        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-2a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
-      </a>
-      <a href="https://t.me/yourchannel" target="_blank" class="contact-social">
-        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M9.04 16.91l-.39 3.84c.56 0 .8-.24 1.09-.53l2.62-2.5 5.44 3.97c1 .55 1.72.26 1.97-.92l3.57-16.73c.32-1.5-.54-2.1-1.5-1.73L1.5 9.5c-1.45.56-1.43 1.36-.25 1.72l5.25 1.64 12.2-7.7c.57-.36 1.1-.16.67.23L9.04 16.91z"/></svg>
-      </a>
-      <a href="https://wa.me/989123456789" target="_blank" class="contact-social">
-        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0012 0C5.37 0 0 5.37 0 12a11.93 11.93 0 001.64 6.07L0 24l6.07-1.64A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12a11.93 11.93 0 00-3.48-8.52zM12 22a9.93 9.93 0 01-5.3-1.52l-.38-.24-3.6.97.97-3.6-.24-.38A9.93 9.93 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.27-7.4l-1.5-.75c-.2-.1-.43-.05-.58.12l-.75.9a8.1 8.1 0 01-3.6-3.6l.9-.75c.17-.15.22-.38.12-.58l-.75-1.5c-.13-.26-.43-.37-.7-.27a4.6 4.6 0 00-2.7 4.2c0 2.54 2.06 4.6 4.6 4.6a4.6 4.6 0 004.2-2.7c.1-.27 0-.57-.27-.7z"/></svg>
-      </a>
-    </li>
-  </ul>
-</div>
-
-
-
-
-<div class="contact-form-card">
-  <h3 class="contact-form-title">فرم تماس با ما</h3>
-  <form id="contact-form">
-    <label for="contact-name">نام و نام خانوادگی</label>
-    <input type="text" id="contact-name" class="contact-form-input" required />
-
-    <label for="contact-email">ایمیل یا شماره تماس</label>
-    <input type="text" id="contact-email" class="contact-form-input" placeholder="اختیاری" />
-
-    <label for="contact-subject">موضوع پیام</label>
-    <select id="contact-subject" class="contact-form-input" required>
-      <option value="">انتخاب موضوع</option>
-      <option>سؤال درباره منو</option>
-      <option>پیشنهاد</option>
-      <option>انتقاد</option>
-      <option>سفارش ویژه</option>
-    </select>
-
-    <label for="contact-message">متن پیام</label>
-    <textarea id="contact-message" class="contact-form-input" rows="5" required></textarea>
-
-    <button type="submit" id="contact-submit" class="contact-form-button">ارسال پیام</button>
-    <p id="contact-response" class="contact-form-response"></p>
-  </form>
-</div>
-
-<script>
-  document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const btn = document.getElementById('contact-submit');
-    const response = document.getElementById('contact-response');
-
-    btn.disabled = true;
-    btn.textContent = 'در حال ارسال...';
-
-    setTimeout(() => {
-      const success = Math.random() > 0.2; // شبیه‌سازی موفقیت یا خطا
-
-      if (success) {
-        response.textContent = '✅ پیام شما با موفقیت ارسال شد. متشکریم 🌿';
-        response.style.color = 'var(--color-success)';
-        this.reset();
-      } else {
-        response.textContent = '❌ متأسفیم، مشکلی رخ داده است. لطفاً دوباره تلاش کنید.';
-        response.style.color = 'var(--color-alert)';
-      }
-
-      btn.disabled = false;
-      btn.textContent = 'ارسال پیام';
-    }, 1500);
-  });
-</script>
-
-
-
-
-<div class="contact-map-card">
-  <h3 class="contact-map-title">موقعیت ما روی نقشه</h3>
-  <div class="contact-map-frame">
-    <!-- Google Map Embed -->
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4892.472576912559!2d54.13575501124666!3d28.899351954191935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1762026711777!5m2!1sen!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</div>
-
-
-
-
-<div class="contact-info-card">
-  <h3 class="contact-info-title">اطلاعات تکمیلی</h3>
-  <ul class="contact-info-list">
-    <li><strong>آدرس:</strong> تهران، خیابان ولیعصر، نبش کوچه ۱۲، پلاک ۲۴، رستوران مهرگان</li>
-    <li><strong>ساعات کاری:</strong> همه‌روزه از ساعت ۸ صبح تا ۱۲ شب</li>
-    <li><strong>روزهای تعطیل:</strong> جمعه‌ها فقط سرویس صبحانه و افطار در ماه رمضان</li>
-    <li><strong>خدمات ویژه:</strong> صبحانه آخر هفته، منوی سنتی ویژه مناسبت‌ها</li>
-  </ul>
-</div>
-
-
-
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>لینک‌های مهم</h4>
-        <ul>
-          <li><a href="#menu">منوی غذا</a></li>
-          <li><a href="#reservation">رزرو میز</a></li>
-          <li><a href="#about">درباره ما</a></li>
-          <li><a href="#contact">تماس با ما</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>ساعات کاری</h4>
-        <p>هر روز: ۱۲ ظهر تا ۱۲ شب</p>
-        <p>جمعه‌ها: ۱ ظهر تا ۱۲ شب</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>شبکه‌های اجتماعی</h4>
-        <div class="social-list">
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"> اینستاگرام</a>
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">واتساپ</a>
-          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="Twitter">توییتر </a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>خبرنامه</h4>
-        <form class="newsletter-form">
-          <label for="email">ایمیل شما:</label>
-          <input type="email" id="email" placeholder="you@example.com" required>
-          <button type="submit">عضویت</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2025 رستوران نمونه. همه حقوق محفوظ است.</p>
-    </div>
-  </div>
-</footer>
-</body>
-</html>
