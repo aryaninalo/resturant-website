@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>فاکتور رسمی سفارش</title>
+  <style>
+    :root {
+  --color-primary: #D94F4F;
+  --color-secondary: #F4A261;
+  --color-accent: #2A9D8F;
+
+  --color-bg-light: #FFF8F1;
+  --color-card: #FFFFFF;
+
+  --color-text: #333333;
+  --color-text-light: #666666;
+
+  --color-link: #E76F51;
+
+  --color-header: #FAF3EB;
+  --color-footer: #EDEDED;
+
+  --color-alert: #E63946;
+  --color-success: #4CAF50;
+
+  --color-shadow: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Vazir', sans-serif;
+  direction: rtl;
+  background: var(--color-bg-light);
+  padding: 20px;
+  color: var(--color-text);
+}
+
+.invoice {
+  max-width: 700px;
+  margin: auto;
+  background: var(--color-card);
+  padding: 30px;
+  border: 1px solid var(--color-footer);
+  box-shadow: 0 0 10px var(--color-shadow);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+}
+
+.info {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid var(--color-footer);
+  padding: 10px;
+  text-align: center;
+  color: var(--color-text);
+}
+
+th {
+  background: var(--color-header);
+  color: var(--color-primary);
+}
+
+.total {
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.print-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 30px;
+  font-size: 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.print-btn:hover {
+  background: var(--color-alert);
+}
+
+@media print {
+  .print-btn {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="invoice">
+    <h1>فاکتور سفارش</h1>
+    <div class="info" id="customer-info"></div>
+
+    <h2>لیست سفارش</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>عنوان</th>
+          <th>تعداد</th>
+          <th>قیمت واحد (تومان)</th>
+          <th>قیمت کل (تومان)</th>
+        </tr>
+      </thead>
+      <tbody id="order-list"></tbody>
+    </table>
+
+    <p class="total">جمع کل: <span id="grand-total">۰</span> تومان</p>
+
+    <button class="print-btn" onclick="window.print()">چاپ فاکتور</button>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("reservationData"));
+    if (!data) {
+      document.body.innerHTML = "<p>اطلاعات رزرو یافت نشد.</p>";
+    } else {
+      const infoBox = document.getElementById("customer-info");
+      infoBox.innerHTML = `
+        <strong>نام مشتری:</strong> ${data.name}<br>
+        <strong>شماره موبایل:</strong> ${data.phone}<br>
+        <strong>تاریخ تحویل:</strong> ${data.date}<br>
+        <strong>ساعت تحویل:</strong> ${data.time}
+      `;
+
+      const orderList = document.getElementById("order-list");
+      const grandTotal = document.getElementById("grand-total");
+      let total = 0;
+
+      Object.entries(data.cart).forEach(([key, item]) => {
+        const priceNum = parseInt(item.price.replace(/[^\d]/g, ''));
+        const itemTotal = priceNum * item.quantity;
+        total += itemTotal;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.title}</td>
+          <td>${item.quantity}</td>
+          <td>${priceNum.toLocaleString('fa-IR')}</td>
+          <td>${itemTotal.toLocaleString('fa-IR')}</td>
+        `;
+        orderList.appendChild(row);
+      });
+
+      grandTotal.textContent = total.toLocaleString('fa-IR');
+    }
+  </script>
+</body>
+</html>
+
