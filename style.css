@@ -96,7 +96,7 @@
 /* تصویر هیرو ثابت */
 .hero-fixed {
   height: calc(var(--nav-height) * 4);
-  background: url('/assets/images/pattern.jpg') center/cover no-repeat fixed;
+  background: url('https://aryaninalo.github.io/resturant-website/assets/images/pattern.jpg') center/cover no-repeat fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1628,7 +1628,7 @@ text-align: center;
 
 
 .contact-page {
-  background-image: url('/assets/images/pattern.jpg');
+  background-image: url('https://aryaninalo.github.io/resturant-website/assets/images/pattern.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2122,6 +2122,7 @@ textarea.contact-form-input {
     font-size: 1rem;
   }
 }
+
 
 
 
